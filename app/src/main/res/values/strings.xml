@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">Test</string>
     <string name="no_internet">No network connectivity.\nPlease reload again</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="title_tags">Available Tags</string>
+    <string name="title_sizes">Available Sizes</string>
+    <string name="message_add_bookmark">Are you sure you want to add %s to bookmark list?</string>
+    <string name="message_remove_bookmark">Are you sure you want to remove %s from bookmark list?</string>
 </resources>

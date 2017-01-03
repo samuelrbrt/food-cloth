@@ -4,6 +4,7 @@ import android.app.IntentService;
 import android.content.Intent;
 import android.util.Log;
 
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.okhttp.OkHttpClient;
@@ -25,6 +26,7 @@ import cosmoscoders.com.test.util.SettingStore;
  * a service on a separate handler thread.
  * <p>
  */
+@SuppressWarnings("ConstantConditions")
 public class SyncIntentService extends IntentService {
 	//Broadcast action
 	public static final String ACTION_SERVER_RESPONSE = "cosmoscoders.com.test.service.action.SERVER_RESPONSE";
@@ -45,13 +47,14 @@ public class SyncIntentService extends IntentService {
 			JSONArray clothProducts = cloth.getJSONArray("products");
 			JSONArray foodProducts = food.getJSONArray("products");
 
-			DatabaseReference reference = FirebaseDatabase.getInstance().getReference("abstract_cloths");
+			DatabaseReference reference = FirebaseDatabase
+			                                  .getInstance(FirebaseApp.getInstance()).getReference("abstract_cloths");
 
 			for (int i = 0; i < clothProducts.length(); i++) {
 				reference.push().setValue(new AbstractClothProduct(clothProducts.getJSONObject(i)));
 			}
 
-			reference = FirebaseDatabase.getInstance().getReference("abstract_food");
+			reference = FirebaseDatabase.getInstance(FirebaseApp.getInstance()).getReference("abstract_food");
 
 			for (int i = 0; i < foodProducts.length(); i++) {
 				reference.push().setValue(new AbstractFoodProduct(foodProducts.getJSONObject(i)));

@@ -3,16 +3,20 @@ package cosmoscoders.com.test.model;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class AbstractProduct {
+import java.io.Serializable;
+
+public class AbstractProduct implements Serializable {
 	private boolean isBookMarked;
-	private String thumbUrl, title, brandName, basePrice, salePrice, productId;
+	private String thumbUrl, title, brandName, salePrice, productId;
+
+	public AbstractProduct() {
+	}
 
 	AbstractProduct(JSONObject object) throws JSONException {
 		productId = object.getString("id");
 		thumbUrl = object.optString("logo_thumb");
 		title = object.getString("title");
 		brandName = object.optString("brand_name");
-		basePrice = object.getString("base_price");
 		salePrice = object.getString("sale_price");
 		isBookMarked = object.optBoolean("is_bookmarked");
 	}
@@ -35,10 +39,6 @@ public class AbstractProduct {
 
 	public String getBrandName() {
 		return brandName;
-	}
-
-	public String getBasePrice() {
-		return basePrice;
 	}
 
 	public String getSalePrice() {
