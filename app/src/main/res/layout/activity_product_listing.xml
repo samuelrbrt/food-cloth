@@ -15,6 +15,7 @@
         android:id="@+id/rv_product_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:scrollbars="vertical"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
     <ProgressBar
@@ -22,6 +23,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:progressDrawable="@drawable/progress_bar"/>
+        android:progressDrawable="@drawable/progress_bar"
+        android:visibility="gone"/>
 
+    <TextView
+        android:id="@+id/tv_no_internet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:drawableTop="@drawable/ic_refresh_primary_48dp"
+        android:gravity="center"
+        android:text="@string/no_internet"
+        android:textColor="@color/light_grey"
+        android:textSize="12sp"
+        android:visibility="gone"/>
 </android.support.design.widget.CoordinatorLayout>
